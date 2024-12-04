@@ -3,23 +3,20 @@
 <suite name="Parallel class testing" parallel = "classes" thread-count="2">
 <parameter name ="browser" value = "Chrome"> </parameter>	
 	<listeners>
-	<listener class-name= "generatereport.Listeners"> </listener>
+	<listener class-name= "generatereport.Listeners"> </listener> <!---method level parallel testing, giving multiple methods parallelly-->
 	</listeners>
 	
-<test name="test">
+<test name="ChromeTest">
 <classes>
 <class name="testscript.LoginTest">
 <methods>
 <include name="VerifyTheUserIsAbleToLogInUsingValidCredentials"> </include>
+<include name="VerifyUserIsAbleToLoginUsingInvalidPassword"> </include>
 </methods> 
 </class>
       
         
- <class name="testscript.AdminUserTest">
- <methods>
- <include name="verifyTheUserIsAbleToLogInUsingValidCredentials"> </include>
- </methods> 
- </class>
+ 
  </classes>
 
  </test> <!-- Test -->

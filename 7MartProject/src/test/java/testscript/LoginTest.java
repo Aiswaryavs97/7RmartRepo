@@ -1,14 +1,18 @@
 package testscript;
 
+import java.io.IOException;
+
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pages.LoginPage;
+import utilities.ExcelUtilities;
 
 public class LoginTest extends Base {
  
 	
-	@Test(retryAnalyzer=retry.Retry.class)
+	@Test(retryAnalyzer=retry.Retry.class,groups= {"regression"},description = "Verify the user is able to log in using valid credentials" )
 	public void VerifyTheUserIsAbleToLogInUsingValidCredentials()
 	{
 		String usernamevalue="admin";
@@ -23,7 +27,7 @@ public class LoginTest extends Base {
 		
 	}
 	
-	@Test
+	@Test(description = "Verify the user is able to log in using invalid credentials" )
 	public void VerifyUserIsAbleToLoginUsingInvalidPassword()
 	{
 		String usernamevalue ="admin";
@@ -56,8 +60,8 @@ public class LoginTest extends Base {
 		loginpage.isDisplayedInvalidPasswordAlert();
 		}
 	 
-	@Test
-	public void VerifyUserIsAbleToLoginUsingInvalidCreds()
+	@Test(dataProvider= "LoginProvider")
+	public void VerifyUserIsAbleToLoginUsingInvalidCreds(String username, String password)
 	{
 		// wrong
 		String usernamevalue ="admin123";
@@ -72,4 +76,10 @@ public class LoginTest extends Base {
 		Assert.assertTrue(invaliduseriddisplayed, "Invalid Username/Password");
 		loginpage.isDisplayedInvalidUserId();
 	}
+	
+	@DataProvider(name = "LoginProvider")
+	public Object[][] getDataFromTestData() throws IOException 
+	{
+		return new Object[][] { { ExcelUtilities.getStringData(1, 6, "LoginPage"), ExcelUtilities.getStringData(1, 7, "LoginPage") }};
+}
 }

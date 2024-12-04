@@ -7,6 +7,7 @@
 	</listeners>
 	
   <test  name="ChromeTest">
+	  <parameter name ="browser" value = "Chrome"> </parameter>	
     <classes>
       <class name="testscript.LoginTest">
       <methods>
@@ -22,6 +23,7 @@
   </test> <!-- Test -->
   
   <test  name="EdgeTest">
+	  <parameter name ="browser" value = "Edge"> </parameter>	
     <classes>
       <class name="testscript.LoginTest">
       <methods>
