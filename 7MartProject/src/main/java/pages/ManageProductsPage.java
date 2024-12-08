@@ -6,6 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import constants.Constants;
+import utilities.FileUpload;
+import utilities.PageUtility;
+
 public class ManageProductsPage {
 	
 WebDriver driver;
@@ -38,15 +42,28 @@ WebDriver driver;
 	
 	@FindBy(xpath="//div[@class='note-editable card-block']")private WebElement descriptionfield; 
 	
-	//rafio button
-	@FindBy(xpath="//input[@name='main_img']")private WebElement mainimahe;
+	@FindBy(xpath="//input[@name='stock' and @value='yes']")private WebElement stockradiobutton;
+	@FindBy(xpath="//input[@name='main_img']")private WebElement mainimage;
 	
 	@FindBy(xpath="//input[@name='subfile[]']")private WebElement subimage;
 	
-	@FindBy(xpath="//div[@class='note-editable card-block']")private WebElement combopackradiobutton;
+	@FindBy(xpath="//input[@name='featured' and @checked='checked']")private WebElement featuredradiobutton ;
+	@FindBy(xpath="//input[@name='combo' and @value='yes']")private WebElement combopackradiobutton;
 	
 	@FindBy(xpath="//button[@class='btn btn-danger\"]")private WebElement savebutton;
 	
+	public void enterUserNameOnUserField(String usernamevaluepassing)
+	{
+		usernameField.sendKeys(usernamevaluepassing);
+	}
+	public void enterPasswordOnPasswordField(String pwdpassing)
+	{
+		pwd.sendKeys(pwdpassing);
+	}
+	public void clickOnSignInButton()
+	{
+		signin.click();
+	}
 	
 	public void clickOnAddProduct() 
 	{
@@ -62,12 +79,19 @@ WebDriver driver;
 	}
 	public void clickOnRadioButton1() 
 	{
-		radiononveg.click();
+		//radiononveg.click();
+		
+		PageUtility pageutility = new PageUtility();
+		pageutility.javaSriptClick(driver, radiononveg);
 	}
 	public void selectGroupDrowpDown() 
 	{
-		Select selectdropwdown= new Select(group);
-		selectdropwdown.selectByIndex(1);
+		//Select selectdropwdown= new Select(group);
+		//selectdropwdown.selectByIndex(1);
+		
+		PageUtility dropdown = new PageUtility();
+		dropdown.selectByIndex(group, 1);
+		
 		
 	}
 	public void clickPriceType()
@@ -105,6 +129,30 @@ WebDriver driver;
 	}
 	public void uploadImage1()
 	{
+		FileUpload upload = new FileUpload();
+		upload.fileuploadusingSenkeys(mainimage, Constants.cinema);
 		
+	}
+	
+	public void uploadImage2()
+	{
+		FileUpload upload = new FileUpload();
+		upload.fileuploadusingSenkeys(subimage, Constants.cinema);
+		
+	}
+	
+	public void clickOnFeaturedRadioButton()
+	{
+		featuredradiobutton.click();
+	}
+
+	public void clickOnComboRadioButton()
+	{
+		combopackradiobutton.click();
+	}
+	
+	public void clickOnSaveButton() 
+	{
+		savebutton.click();
 	}
 }

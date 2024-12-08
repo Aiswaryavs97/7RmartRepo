@@ -2,6 +2,7 @@ package testscript;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ import org.testng.annotations.Parameters;
 
 import constants.Constants;
 import utilities.ScreenshotUtility;
+import utilities.WaitUtilities;
 
  
 
@@ -42,7 +44,7 @@ public FileInputStream fileinputstream;
 		
 		//driver = new ChromeDriver();// to loading the driver -- browser initialization into the driver name 
  if(browser.equalsIgnoreCase("Chrome")) {
-			//driver=new ChromeDriver();
+			driver=new ChromeDriver();
 		}
 		else if(browser.equalsIgnoreCase("Edge")) {
 			driver=new EdgeDriver();
@@ -50,38 +52,38 @@ public FileInputStream fileinputstream;
 		else if(browser.equalsIgnoreCase("Firefox")) {
 	driver=new FirefoxDriver();
 		}
-	else {
-	throw new Exception("browser is incorrect");
-	} 
+	else 
+{
+throw new Exception("browser is incorrect");
+} 
 		
 		
-		driver.get("https://groceryapp.uniqassosiates.com/admin/login");// get is a method using to launch the URL 
+//driver.get("https://groceryapp.uniqassosiates.com/admin/login");// get is a method using to launch the URL 
 		   
-	driver.get(properties.getProperty("url"));
-	 //implicit wait after url loads
-    //if given 10 sec, element loads in 2 sec, but it will wait till 10, so dont use for bigger time period
-    //common wait
-    
-//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Waitutilities.implicitwait));
-
-		driver.manage().window().maximize();// to maximize the screen 
-		   
-		}
+driver.get(properties.getProperty("url"));
+//implicit wait after url loads
+//if given 10 sec, element loads in 2 sec, but it will wait till 10, so dont use for bigger time period
+//common wait
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtilities.implicitwait));
+driver.manage().window().maximize();// to maximize the screen 
+}
 		
-	@AfterMethod(alwaysRun=true)
-		/*public void driverQuitAndClose() 
-		{
-			// driver.close();// to close the screen (closing only the parent window)
-			//driver.quit();// closing all the windows 
-		}*/
+@AfterMethod(alwaysRun=true)
+/*public void driverQuitAndClose() 
+{
+// driver.close();// to close the screen (closing only the parent window)
+//driver.quit();// closing all the windows 
+}*/
 	
-	public void browserQuit(ITestResult iTestResult) throws IOException {
-		if (iTestResult.getStatus() == ITestResult.FAILURE) {
-			scrshot = new ScreenshotUtility();
-			scrshot.getScreenShot(driver, iTestResult.getName());
-		}
+public void browserQuit(ITestResult iTestResult) throws IOException 
 
-		driver.quit();
+{
+if (iTestResult.getStatus() == ITestResult.FAILURE) {
+scrshot = new ScreenshotUtility();
+scrshot.getScreenShot(driver, iTestResult.getName());
+}
+
+		//driver.quit();
 	}
 
 

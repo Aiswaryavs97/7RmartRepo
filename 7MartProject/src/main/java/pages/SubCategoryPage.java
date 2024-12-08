@@ -34,6 +34,20 @@ public class SubCategoryPage  {
 	@FindBy(xpath="//button[@class='btn btn-danger']")private WebElement saveimage;
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")private WebElement alert;
 	
+	
+	public void enterUserNameOnUserField(String usernamevaluepassing)
+	{
+		usernameField.sendKeys(usernamevaluepassing);
+	}
+	public void enterPasswordOnPasswordField(String pwdpassing)
+	{
+		pwd.sendKeys(pwdpassing);
+	}
+	public void clickOnSignInButton()
+	{
+		signin.click();
+	}
+	
 	public void clickOnSubCategory(  )
 	{
 		subcategory.click();
@@ -53,7 +67,7 @@ public class SubCategoryPage  {
 	 public void subCategory(String  subcategoryvalue )
 	 {
 		 entersubcategory.click();
-		 entersubcategory.sendKeys( subcategoryvalue );// why passing the value again
+		 entersubcategory.sendKeys(subcategoryvalue);// why passing the value again
 		 
 	 }
 	 

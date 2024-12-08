@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class NewsPage {
 
 WebDriver driver;
@@ -43,15 +45,12 @@ WebDriver driver;
 		managenews.click();
 	}
 	
-	public void deleteNews() 
-	{
-		deletenews.click();
-		driver.switchTo().alert().accept();
-	}
 	
 	public void clickOnNewButton()
 	{
-		newbutton.click();
+		//newbutton.click();
+		PageUtility object = new PageUtility();
+		object.javaSriptClick(driver, newbutton);
 	}
 	public void clickOnTextField(String enternews) 
 	{
@@ -68,5 +67,11 @@ WebDriver driver;
 	{
 		return  alertmessage.isDisplayed();
 		
+	}
+	
+	public void deleteNews() 
+	{
+		deletenews.click();
+		driver.switchTo().alert().accept();
 	}
 }

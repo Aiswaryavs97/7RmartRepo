@@ -7,14 +7,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="testscript.SubCategoryTest">
+      <class name="testscript.ManageProductTest">
         <methods>
-          <include name="verifyUserIsAbleToAddTheCategory"/>
-          <include name="verifyUserIsGettingAlreadyExistValidation"/>
-          <include name="driverQuitAndClose"/>
           <include name="initalizeBrowser"/>
+          <include name="verifyUserIsAbleToAddProduct"/>
+          <include name="browserQuit"/>
         </methods>
-      </class> <!-- testscript.SubCategoryTest -->
+      </class> <!-- testscript.ManageProductTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

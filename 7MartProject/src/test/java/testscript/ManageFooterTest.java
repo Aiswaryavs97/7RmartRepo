@@ -1,21 +1,24 @@
 package testscript;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.LoginPage;
 import pages.ManageFooterPage;
+import utilities.ExcelUtilities;
 
-public class ManageFooterTest {
+public class ManageFooterTest extends Base {//passed
 	
 	@Test
-	public void updateFooterText()
+	public void updateFooterText() throws IOException
 	
 	{
-		String usernamevalue="admin";
-		String passwordvalue="admin";
+ String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+ String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 		
-		LoginPage loginpage= = new LoginPage(driver)
+		LoginPage loginpage = new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);
 		loginpage.enterPasswordOnPasswordField(passwordvalue);
 		loginpage.clickOnSignInButton();

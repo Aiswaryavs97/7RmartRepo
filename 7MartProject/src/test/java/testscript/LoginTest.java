@@ -9,15 +9,18 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utilities.ExcelUtilities;
 
-public class LoginTest extends Base {
+public class LoginTest extends Base {//passed
  
 	
 	@Test(retryAnalyzer=retry.Retry.class,groups= {"regression"},description = "Verify the user is able to log in using valid credentials" )
-	public void VerifyTheUserIsAbleToLogInUsingValidCredentials()
+	public void VerifyTheUserIsAbleToLogInUsingValidCredentials() throws IOException
 	{
-		String usernamevalue="admin";
-		String passwordvalue="admin";
+	// String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+	 //String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 		
+	 String usernamevalue =  ExcelUtilities.getStringData(1, 0, "LoginPage");
+	 String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
+	 
 		LoginPage loginpage=new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);
 		loginpage.enterPasswordOnPasswordField(passwordvalue);
@@ -27,11 +30,14 @@ public class LoginTest extends Base {
 		
 	}
 	
-	@Test(description = "Verify the user is able to log in using invalid credentials" )
-	public void VerifyUserIsAbleToLoginUsingInvalidPassword()
+	@Test(retryAnalyzer=retry.Retry.class,groups= {"regression"},description = "Verify the user is able to log in using invalid credentials" )
+	public void VerifyUserIsAbleToLoginUsingInvalidPassword() throws IOException
 	{
-		String usernamevalue ="admin";
-		String passwordvalue="admin123";
+		 String usernamevalue ="admin";
+		 String passwordvalue="admin123";
+		
+		// String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+		 //String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 		
 		LoginPage loginpage=new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);

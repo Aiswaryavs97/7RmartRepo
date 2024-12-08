@@ -1,21 +1,24 @@
 package testscript;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pages.LoginPage;
 import pages.SubCategoryPage;
+import utilities.ExcelUtilities;
 
 public class SubCategoryTest extends Base  {
 	
 	 
 	
 	@Test
-	public void verifyUserIsAbleToAddTheCategory()
+	public void verifyUserIsAbleToAddTheCategory() throws IOException
 	
 	{
-		String usernamevalue="admin";
-		String passwordvalue="admin";
+		 String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+		 String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 		
 		LoginPage loginpage=new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);
@@ -24,6 +27,8 @@ public class SubCategoryTest extends Base  {
 		
 		
 		String subc= "Test";
+		
+		// String subc= ExcelUtilities.getStringData(1, 0, "SubCategory");--- read from excel 
 		SubCategoryPage subcategorypage = new SubCategoryPage(driver);
 		subcategorypage.clickOnSubCategory();
 		subcategorypage.clickOnNewButton();
@@ -34,12 +39,16 @@ public class SubCategoryTest extends Base  {
 	}
 	
 	@Test
-	public void verifyUserIsGettingAlreadyExistValidation()
+	public void verifyUserIsGettingAlreadyExistValidation() throws IOException
 	
 	
 	{
-		String usernamevalue="admin";
-		String passwordvalue="admin";
+	 String usernamevalue="admin";
+	String passwordvalue="admin";
+		
+		//String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+		//String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
+		
 		
 		LoginPage loginpage=new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);

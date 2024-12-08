@@ -1,18 +1,24 @@
 package testscript;
 
+import java.io.IOException;
+
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import pages.LoginPage;
 import pages.ManageContactPage;
+import utilities.ExcelUtilities;
 
-public class ManageContactTest extends Base{
+public class ManageContactTest extends Base{//passed
 	
-	public void verifyUserIsAbleToUpdateContactTest() 
+	
+	@Test
+	public void verifyUserIsAbleToUpdateContactTest() throws IOException 
 	{
 		
 
-		String usernamevalue="admin";
-		String passwordvalue="admin";
+ String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+ String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 		
 		LoginPage loginpage= new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);
@@ -28,6 +34,7 @@ public class ManageContactTest extends Base{
 		String enterdeltime="50";
 		String enterdellimit="60";
 		managecontactpage.clickOnContact();
+		managecontactpage.clickEdit();
 		managecontactpage.clickOnPhone(enterphone);
 		managecontactpage.clickOnAddress(enteremail);
 		managecontactpage.clickOnEmail(enteremail);

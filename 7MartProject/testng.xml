@@ -8,9 +8,10 @@
 	
   <test thread-count="5" name="Test">
     <classes>
-      <class name="testscript.SubCategoryTest">
+      <class name="testscript.ManageProductTest">
       <methods>
-      <include name="verifyUserIsAbleToAddTheCategory"> </include>
+      <include name="verifyUserIsAbleToAddProduct"> </include>
+  
     
       
        </methods>
