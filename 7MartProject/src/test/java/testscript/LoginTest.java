@@ -18,8 +18,8 @@ public class LoginTest extends Base {//passed
 	// String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
 	 //String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 		
-	 String usernamevalue =  ExcelUtilities.getStringData(1, 0, "LoginPage");
-	 String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
+	String usernamevalue = ExcelUtilities.getStringData(1, 0, "LoginPage");
+	String passwordvalue = ExcelUtilities.getStringData(1, 1, "LoginPage");
 	 
 		LoginPage loginpage=new LoginPage(driver);
 		loginpage.enterUserNameOnUserField(usernamevalue);
